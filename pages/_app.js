@@ -7,7 +7,7 @@ import Script from 'next/script';
 import LoadingBar from 'react-top-loading-bar'
 import { useRouter } from 'next/router'
 import { useEffect } from 'react'
-
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
