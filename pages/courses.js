@@ -61,6 +61,7 @@ const courses = () => {
 
   const [userData, setUserData] = useState({
     syllabusEmail: "",
+    syllabusPhone: "",
   });
 
   let name, value;
@@ -75,8 +76,8 @@ const courses = () => {
   // Connecting With Firebase DB 
   const handleForm = async (event) => {
     event.preventDefault();
-    const { syllabusEmail } = userData;
-    if (syllabusEmail) {
+    const { syllabusEmail, syllabusPhone } = userData;
+    if (syllabusEmail && syllabusPhone) {
       const res = await fetch(
         "https://nextdb-bfcfc-default-rtdb.firebaseio.com/Syllabus-Download-and-course-selected-NewStudents.json", {
         method: "POST",
@@ -85,6 +86,7 @@ const courses = () => {
         },
         body: JSON.stringify({
           Email: syllabusEmail,
+          Phone: syllabusPhone,
         }),
       }
       );
@@ -268,19 +270,19 @@ const courses = () => {
               <div className={styles.basicfeatures} id="select">
                 <span className={styles.smalltext2}>Earliest Batch</span>
                 <br />
-                <b className={styles.b}>5th Dec</b>
+                <b className={styles.b}>4th February 2023</b>
                 <p>52% Discount on early registration</p>
                 <div className={styles.batchinfo}>
-                Weekday's Batch: Mon-Thu: 1.5hours
+                Weekend's Batch: Sat-Sun: 3hours
                 </div>
               </div>
               <div className={styles.basicfeatures} id="select2">
                 <span className={styles.smalltext2}>Next Batch</span>
                 <br />
-                <b className={styles.b}>10th Dec</b>
+                <b className={styles.b}>20th February 2023</b>
                 <p>52% Discount on early registration</p>
                 <div className={styles.batchinfo}>
-                  Weekend's Batch: Sat-Sun: 3hours
+                  Weekday's Batch: Mon-Thu: 1.5hours
                 </div>
               </div>
             </div>
@@ -387,6 +389,11 @@ const courses = () => {
                 <form className={styles.alignequal} method="POST">
                   <input type="email" name='syllabusEmail' placeholder='Enter Your Email' className={styles.input}
                     value={userData.syllabusEmail}
+                    onChange={postUserData}
+                    required />
+                    <br />
+                    <input type="number" name='syllabusPhone' placeholder='Enter Your Phone No.' className={styles.input}
+                    value={userData.syllabusPhone}
                     onChange={postUserData}
                     required />
                   <button className={styles.btn2} type="submit" onClick={handleForm}>Download</button>

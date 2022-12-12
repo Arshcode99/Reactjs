@@ -11,11 +11,12 @@ const SelectBatch = () => {
 
     const [batch, setBatch] = useState("");
     const [Emailforbatch, setEmailforbatch] = useState("");
+    const [Nameforbatch, setNameforbatch] = useState("");
 
     // Connecting With Firebase DB 
   const handleForm = async (event) => {
     event.preventDefault();
-    if( batch && Emailforbatch ){
+    if( batch && Emailforbatch && Nameforbatch ){
     const res = await fetch(
       "https://nextdb-bfcfc-default-rtdb.firebaseio.com/NewStudents-joined-with-batch.json", {
       method: "POST",
@@ -25,6 +26,7 @@ const SelectBatch = () => {
       body: JSON.stringify({
         Batch: batch,
         Email: Emailforbatch,
+        Phone: Nameforbatch,
       }),
     }
     );
@@ -63,6 +65,7 @@ const SelectBatch = () => {
             <br />
             <h6>You selected: {batch}</h6>
             <h6>Your Email: {Emailforbatch}</h6>
+            <h6>Your Phone No. : {Nameforbatch}</h6>
           </div>
           <div className={styles.rightside}>
             <form className={styles.alignequal} method="POST">
@@ -71,6 +74,12 @@ const SelectBatch = () => {
               onChange={(e)=>{
                 const SelectedBatchEmail=e.target.value;
                 setEmailforbatch(SelectedBatchEmail)
+               }}  />
+               <label htmlFor="Name">Phone No.*</label>
+              <input type="number" name='Name' className={styles.input} placeholder="Enter Your Phone No..."
+              onChange={(e)=>{
+                const SelectedBatchName=e.target.value;
+                setNameforbatch(SelectedBatchName)
                }}  />
               <br />
               <label htmlFor="Batch">Select a batch</label>
@@ -88,10 +97,10 @@ const SelectBatch = () => {
                }} 
                required />
               <br />
-              <b className={styles.b1}>5th Dec</b>
+              <b className={styles.b1}>4th February 2023</b>
               <p className={styles.p}>52% Discount on early registraion</p>
               <div className={styles.batchinfo}>
-              Weekday's Batch: Mon-Thu: 1.5hours
+              Weekend's Batch: Sat-Sun: 3hours
               </div>
             </div>
             <div className={styles.basicfeatures} id="select2">
@@ -107,10 +116,10 @@ const SelectBatch = () => {
                }} 
                required />
               <br />
-              <b className={styles.b1}>10th Dec</b>
+              <b className={styles.b1}>20th February 2023</b>
               <p className={styles.p}>52% Discount on early registraion</p>
               <div className={styles.batchinfo}>
-              Weekend's Batch: Sat-Sun: 3hours
+              Weekday's Batch: Mon-Thu: 1.5hours
               </div>
             </div>
             </div>
