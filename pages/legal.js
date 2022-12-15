@@ -214,6 +214,9 @@ const Legal = () => {
               <p>If you have any questions about our Returns and Refunds Policy, please contact us:</p>
               <ul>
                 <li>
+                  <p>Address:  Sushant Lok Phase-1, Sector 43, Gurgaon, 122009, Haryana, India.</p>
+                </li>
+                <li>
                   <p>By email: support@reactjsofficial.com</p>
                 </li>
                 <li>
